@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOR VIJAYASREE</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.464);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        .text-snippet {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            text-align: center;
+        }
+        .visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .hidden {
+            transform: scale(0.8);
+        }
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        #title-image {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        video {
+            width: 50%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        @media (max-width: 768px) {
+            .content {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="content">
+            <div class="title"></div>
+            <div id="snippet1" class="text-snippet hidden">Nuvvu nannu thakina modati kshanamlo nakem anipinchindhi telusa? nuvvu nakosam puttavani!!!</div>
+            <div id="snippet2" class="text-snippet hidden">If I know what love is, it is because of you😘</div>
+            <div id="snippet3" class="text-snippet hidden">Loved you yesterday, love you still and always will❤❤❤</div>
+            <div id="snippet4" class="text-snippet hidden">You are the only one I know how to love. The only one I want to love😍😍😘😘</div>
+            <video id="video" src="finvid-1.mp4" autoplay muted></video>
+        </div>
+    </div>
+
+    <script>
+        let currentSnippet = 0;
+        const snippets = document.querySelectorAll('.text-snippet');
+
+        function showNextSnippet() {
+            if (currentSnippet < snippets.length) {
+                snippets[currentSnippet].classList.add('visible');
+                snippets[currentSnippet].classList.remove('hidden');
+                currentSnippet++;
+                setTimeout(showNextSnippet, 3000);
+            }
+        }
+
+        window.onload = () => {
+            setTimeout(showNextSnippet, 1000);
+
+            const video = document.getElementById('video');
+
+            document.body.addEventListener('click', () => {
+                video.muted = false;
+                video.play();
+            }, { once: true }); // Only add the event listener once
+        };
+    </script>
+</body>
+</html>
